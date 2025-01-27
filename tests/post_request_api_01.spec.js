@@ -39,7 +39,3 @@ test('Create Post API request with static response body',async({request})=> {
 
 })
 
-//Validate Json status code
-//Validate Json response body
-//validate nested Json objects
-
