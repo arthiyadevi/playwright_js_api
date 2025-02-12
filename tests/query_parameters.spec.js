@@ -2,7 +2,7 @@ const{test,expect} = require('@playwright/test')
 const APIRequestBody = require('../test-data/post_api_dynamic_request_body')
 const {stringFormat} = require('../utils/common')
 
-test('Query parameters in Playwright',async({request}) => {
+test('Get api request',async({request}) => {
 
     const dynamicRequestBody = stringFormat(JSON.stringify(APIRequestBody),"Percy","Jackson","Reading Books")
 
@@ -18,7 +18,12 @@ test('Query parameters in Playwright',async({request}) => {
 
     const bid = postAPIResponseBody.bookingid;
 
-    const getAPIResponse = await request.get(`/booking/${bid}`)
+    const getAPIResponse = await request.get(`/booking`,{
+        params:{
+            "firstname": "Percy",
+            "lastname":"Jackson"
+        }
+    })
 
     console.log(await getAPIResponse.json())
 
